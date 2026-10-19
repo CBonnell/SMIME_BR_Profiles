@@ -1,9 +1,7 @@
+
 # CA/Browser Forum S/MIME Baseline Requirements: Infrared certificate profiles
 
-Machine-readable subscriber certificate profiles for the CA/Browser Forum
-*Baseline Requirements for the Issuance and Management of Publicly-Trusted
-S/MIME Certificates* (S/MIME BR), written against the Infrared certificate
-profile schema:
+Machine-readable subscriber certificate profiles for the CA/Browser Forum *Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates* (S/MIME BR), written against the Infrared certificate profile schema developed by Corey Bonnell:
 
     https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json
 
