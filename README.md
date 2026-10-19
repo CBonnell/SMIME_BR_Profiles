@@ -8,11 +8,7 @@ Machine-readable subscriber certificate profiles for the CA/Browser Forum *Basel
 ## Target version
 
 S/MIME BR **v1.0.16**, adopted by Ballot SMC018 and published September 28, 2026.
-This is the version on the `main` branch of https://github.com/cabforum/smime
-at the time of writing. The profiles reflect the requirements in force on the
-date of generation, so SHA-1 signatures are excluded (sunset September 15, 2026,
-Ballot SMC016). Where a requirement has a future effective date, the profile
-notes say which state is modeled.
+Where a requirement has a future effective date, the profile notes say which state is modeled.
 
 ## Files
 
@@ -117,9 +113,6 @@ BR tolerates (see Limitations).
 
 ## Limitations
 
-These fall into three groups: things the schema cannot express, deliberate
-modeling choices, and points that should be verified against the BR text.
-
 ### Schema limitations
 
 1. **"SHALL NOT be present" cannot be stated.** The schema has no negative
@@ -185,28 +178,3 @@ modeling choices, and points that should be verified against the BR text.
 * **Length bounds** come from RFC 5280 Appendix A upper bounds, not from the
   S/MIME BR, which sets none of its own.
 
-### Points to verify against the BR text
-
-The Section 6 and 7 details were confirmed from the official cabforum.org
-publication and from CA policy documents that mirror the BR wording, rather
-than from one continuous read of the v1.0.16 document. The following are the
-items most worth checking against the PDF before relying on them in audit:
-
-* Strict excludes streetAddress and postalCode; Multipurpose permits them.
-* `title` is excluded from Organization-validated subjects in both generations.
-* A pseudonym may not be combined with givenName or surname.
-* subjectKeyIdentifier is optional and non-critical in subscriber certificates.
-* Ballot SMC018 does not change the Strict row of 7.1.2.3 (f); Strict remains
-  id-kp-emailProtection only.
-
-## Validation performed
-
-No JSON Schema validator was available offline, so the files were checked with
-a purpose-built structural checker covering the schema's allowed keys per block,
-required fields, the rule that `alwaysPresent: false` blocks carry a real
-constraint, `clause` character sets, regular expression compatibility (no
-lookaround or backreferences), and resolution of every `$use` and `%label%`.
-Regular expressions were exercised against representative good and bad values.
-The Sponsor-validated Strict profile was exercised against a production
-DigiCert Sponsor-validated Strict certificate, which passed every expressible
-check. Loading the files in Infrared itself remains the definitive test.
