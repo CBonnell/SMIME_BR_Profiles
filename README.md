@@ -7,7 +7,7 @@ Machine-readable subscriber certificate profiles for the CA/Browser Forum *Basel
 
 ## Target version
 
-S/MIME BR **v1.0.16**, adopted by Ballot SMC018 and published September 28, 2026.
+S/MIME BR **v1.0.16** published September 28, 2026.
 Where a requirement has a future effective date, the profile notes say which state is modeled.
 
 ## Files
