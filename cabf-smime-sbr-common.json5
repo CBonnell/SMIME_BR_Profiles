@@ -1,0 +1,630 @@
+{
+  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  "name": "cabf-smime-sbr-1.0.16-common",
+  "version": "1.1.0",
+  "description": "Shared definitions for the CA/Browser Forum S/MIME Baseline Requirements v1.0.16 Strict and Multipurpose generation subscriber profiles: AlgorithmIdentifier encodings, reserved policy identifiers, and extension blocks reused by the four certificate-type profiles.",
+  "org": "cabforum",
+  "spec": "smime-br-1.0.16",
+  "$defs": {
+    "rsaEncryption": {
+      "value": "300d06092a864886f70d0101010500",
+      "description": "RSA (SBR 7.1.3.1.1)"
+    },
+    "ecP256": {
+      "value": "301306072a8648ce3d020106082a8648ce3d030107",
+      "description": "ECDSA P-256 (SBR 7.1.3.1.2)"
+    },
+    "ecP384": {
+      "value": "301006072a8648ce3d020106052b81040022",
+      "description": "ECDSA P-384 (SBR 7.1.3.1.2)"
+    },
+    "ecP521": {
+      "value": "301006072a8648ce3d020106052b81040023",
+      "description": "ECDSA P-521 (SBR 7.1.3.1.2)"
+    },
+    "ed25519": {
+      "value": "300506032b6570",
+      "description": "Ed25519 (SBR 7.1.3.1.3 / 7.1.3.2.3)"
+    },
+    "ed448": {
+      "value": "300506032b6571",
+      "description": "Ed448 (SBR 7.1.3.1.3 / 7.1.3.2.3)"
+    },
+    "mlDsa44": {
+      "value": "300b0609608648016503040311",
+      "description": "ML-DSA-44, pure (SBR 7.1.3.1 / 7.1.3.2.4)"
+    },
+    "mlDsa65": {
+      "value": "300b0609608648016503040312",
+      "description": "ML-DSA-65, pure (SBR 7.1.3.1 / 7.1.3.2.4)"
+    },
+    "mlDsa87": {
+      "value": "300b0609608648016503040313",
+      "description": "ML-DSA-87, pure (SBR 7.1.3.1 / 7.1.3.2.4)"
+    },
+    "mlKem512": {
+      "value": "300b0609608648016503040401",
+      "description": "ML-KEM-512 (SBR 6.1.5 / 7.1.3.1)"
+    },
+    "mlKem768": {
+      "value": "300b0609608648016503040402",
+      "description": "ML-KEM-768 (SBR 6.1.5 / 7.1.3.1)"
+    },
+    "mlKem1024": {
+      "value": "300b0609608648016503040403",
+      "description": "ML-KEM-1024 (SBR 6.1.5 / 7.1.3.1)"
+    },
+    "sha256WithRSAEncryption": {
+      "value": "300d06092a864886f70d01010b0500",
+      "description": "RSASSA-PKCS1-v1_5 with SHA-256 (SBR 7.1.3.2.1)"
+    },
+    "sha384WithRSAEncryption": {
+      "value": "300d06092a864886f70d01010c0500",
+      "description": "RSASSA-PKCS1-v1_5 with SHA-384 (SBR 7.1.3.2.1)"
+    },
+    "sha512WithRSAEncryption": {
+      "value": "300d06092a864886f70d01010d0500",
+      "description": "RSASSA-PKCS1-v1_5 with SHA-512 (SBR 7.1.3.2.1)"
+    },
+    "rsassaPssSha256": {
+      "value": "304106092a864886f70d01010a3034a00f300d06096086480165030402010500a11c301a06092a864886f70d010108300d06096086480165030402010500a203020120",
+      "description": "RSASSA-PSS, SHA-256, MGF1-SHA-256, salt 32 (SBR 7.1.3.2.1)"
+    },
+    "rsassaPssSha384": {
+      "value": "304106092a864886f70d01010a3034a00f300d06096086480165030402020500a11c301a06092a864886f70d010108300d06096086480165030402020500a203020130",
+      "description": "RSASSA-PSS, SHA-384, MGF1-SHA-384, salt 48 (SBR 7.1.3.2.1)"
+    },
+    "rsassaPssSha512": {
+      "value": "304106092a864886f70d01010a3034a00f300d06096086480165030402030500a11c301a06092a864886f70d010108300d06096086480165030402030500a203020140",
+      "description": "RSASSA-PSS, SHA-512, MGF1-SHA-512, salt 64 (SBR 7.1.3.2.1)"
+    },
+    "ecdsaWithSha256": {
+      "value": "300a06082a8648ce3d040302",
+      "description": "ECDSA with SHA-256 (SBR 7.1.3.2.2)"
+    },
+    "ecdsaWithSha384": {
+      "value": "300a06082a8648ce3d040303",
+      "description": "ECDSA with SHA-384 (SBR 7.1.3.2.2)"
+    },
+    "ecdsaWithSha512": {
+      "value": "300a06082a8648ce3d040304",
+      "description": "ECDSA with SHA-512 (SBR 7.1.3.2.2)"
+    },
+    "policy_mv_strict": {
+      "value": "2.23.140.1.5.1.3",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, mailbox-validated strict (SBR 7.1.6.1)"
+    },
+    "policy_ov_strict": {
+      "value": "2.23.140.1.5.2.3",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, organization-validated strict (SBR 7.1.6.1)"
+    },
+    "policy_sv_strict": {
+      "value": "2.23.140.1.5.3.3",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, sponsor-validated strict (SBR 7.1.6.1)"
+    },
+    "policy_iv_strict": {
+      "value": "2.23.140.1.5.4.3",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, individual-validated strict (SBR 7.1.6.1)"
+    },
+    "policy_mv_multipurpose": {
+      "value": "2.23.140.1.5.1.2",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, mailbox-validated multipurpose (SBR 7.1.6.1)"
+    },
+    "policy_ov_multipurpose": {
+      "value": "2.23.140.1.5.2.2",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, organization-validated multipurpose (SBR 7.1.6.1)"
+    },
+    "policy_sv_multipurpose": {
+      "value": "2.23.140.1.5.3.2",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, sponsor-validated multipurpose (SBR 7.1.6.1)"
+    },
+    "policy_iv_multipurpose": {
+      "value": "2.23.140.1.5.4.2",
+      "description": "CA/Browser Forum S/MIME BR reserved policy identifier, individual-validated multipurpose (SBR 7.1.6.1)"
+    },
+    "idKpClientAuth": {
+      "value": "1.3.6.1.5.5.7.3.2",
+      "description": "id-kp-clientAuth"
+    },
+    "idKpEmailProtection": {
+      "value": "1.3.6.1.5.5.7.3.4",
+      "description": "id-kp-emailProtection"
+    },
+    "version_v3": {
+      "valueEq": "v3",
+      "clause": "7.1.1",
+      "description": "Certificates SHALL be X.509 v3."
+    },
+    "serialNumber_subscriber": {
+      "clause": "7.1",
+      "valueGt": 0,
+      "valueLt": "0x8000000000000000000000000000000000000000",
+      "description": "Non-sequential, greater than zero and less than 2^159, containing at least 64 bits of CSPRNG output. Entropy and non-sequentiality are not machine-checkable from a single certificate."
+    },
+    "signatureAlgorithm_sbr": {
+      "clause": "7.1.3.2",
+      "algorithms": [
+        "%sha256WithRSAEncryption%",
+        "%sha384WithRSAEncryption%",
+        "%sha512WithRSAEncryption%",
+        "%rsassaPssSha256%",
+        "%rsassaPssSha384%",
+        "%rsassaPssSha512%",
+        "%ecdsaWithSha256%",
+        "%ecdsaWithSha384%",
+        "%ecdsaWithSha512%",
+        "%ed25519%",
+        "%ed448%",
+        "%mlDsa44%",
+        "%mlDsa65%",
+        "%mlDsa87%"
+      ],
+      "description": "All Signature AlgorithmIdentifier encodings permitted by SBR 7.1.3.2. SHA-1 is excluded (sunset September 15, 2026 per SMC016). The algorithm actually used is fixed by the Issuing CA key; a CA should narrow this list to its own issuer's algorithm(s)."
+    },
+    "signatureValue_any": {
+      "clause": "7.1.3.2",
+      "description": "Signature bytes; no stipulation beyond the algorithm encoding."
+    },
+    "subjectPublicKey_sbr": {
+      "algorithm": {
+        "clause": "7.1.3.1",
+        "algorithms": [
+          "%rsaEncryption%",
+          "%ecP256%",
+          "%ecP384%",
+          "%ecP521%",
+          "%ed25519%",
+          "%ed448%",
+          "%mlDsa44%",
+          "%mlDsa65%",
+          "%mlDsa87%",
+          "%mlKem512%",
+          "%mlKem768%",
+          "%mlKem1024%"
+        ],
+        "description": "SubjectPublicKeyInfo AlgorithmIdentifier encodings permitted by SBR 6.1.5 and 7.1.3.1. No other encodings are permitted. ML-DSA must be pure ML-DSA (HashML-DSA prohibited); parameters absent."
+      },
+      "rsa": {
+        "modulusLength": {
+          "clause": "6.1.5",
+          "valueGte": 2048,
+          "description": "RSA modulus at least 2048 bits. SBR also requires the size in bits to be evenly divisible by 8; that check is not expressible with this schema's operators."
+        },
+        "exponent": {
+          "clause": "6.1.6",
+          "valueAllOf": [
+            {
+              "gte": 3
+            },
+            {
+              "match": "[13579bdfBDF]$"
+            }
+          ],
+          "description": "Public exponent SHALL be an odd number equal to 3 or more, and SHOULD be in the range 2^16+1 to 2^256-1. Oddness is checked on the final digit of the text form (decimal or hex)."
+        }
+      }
+    },
+    "issuer_subordinateCa": {
+      "ordered": false,
+      "description": "Issuing CA subject. SBR 7.1.4.3.1 requires commonName, organizationName, and countryName in CA subjects; SBR 7.1.4.1 requires the issuer to be byte-for-byte identical to the Issuing CA subject. A CA operator SHOULD replace or extend this block with tlvHexEq pinned to its issuing CA's subject DN encoding.",
+      "rdns": [
+        {
+          "countryName": {
+            "clause": "7.1.4.3.1",
+            "valueMatch": "^[A-Z]{2}$"
+          }
+        },
+        {
+          "stateOrProvinceName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.3.1",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ]
+          }
+        },
+        {
+          "localityName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.3.1",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ]
+          }
+        },
+        {
+          "organizationName": {
+            "clause": "7.1.4.3.1",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ]
+          }
+        },
+        {
+          "organizationIdentifier": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.3.1",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ]
+          }
+        },
+        {
+          "commonName": {
+            "clause": "7.1.4.3.1",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ]
+          }
+        }
+      ]
+    },
+    "ext_crlDistributionPoints_strict": {
+      "crlDistributionPoints": {
+        "clause": "7.1.2.3.b",
+        "description": "SHALL be present; SHOULD NOT be marked critical. Strict: every uniformResourceIdentifier SHALL use the HTTP scheme; other schemes SHALL NOT be present.",
+        "ordered": false,
+        "distributionPoints": [
+          {
+            "clause": "7.1.2.3.b",
+            "distributionPoint": {
+              "clause": "7.1.2.3.b",
+              "fullName": {
+                "size": {
+                  "min": 1
+                },
+                "pattern": {
+                  "type": "uniformResourceIdentifier",
+                  "clause": "7.1.2.3.b",
+                  "valueMatch": "^http://[^\\s/?#:@][^\\s/?#]*([/?#]\\S*)?$"
+                }
+              }
+            }
+          },
+          {
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.b",
+            "description": "Optional second distribution point (dual-CRL deployments); if present it SHALL also use HTTP only.",
+            "distributionPoint": {
+              "clause": "7.1.2.3.b",
+              "fullName": {
+                "size": {
+                  "min": 1
+                },
+                "pattern": {
+                  "type": "uniformResourceIdentifier",
+                  "clause": "7.1.2.3.b",
+                  "valueMatch": "^http://[^\\s/?#:@][^\\s/?#]*([/?#]\\S*)?$"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "ext_authorityInformationAccess_strict": {
+      "authorityInformationAccess": {
+        "alwaysPresent": false,
+        "critical": false,
+        "ordered": false,
+        "clause": "7.1.2.3.c",
+        "description": "SHOULD be present; SHALL NOT be marked critical. id-ad-caIssuers SHOULD be present; id-ad-ocsp MAY be present. Strict: when provided, every accessMethod SHALL use the HTTP scheme.",
+        "accessDescriptions": [
+          {
+            "method": "caIssuers",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.c.2",
+            "accessLocation": {
+              "type": "uniformResourceIdentifier",
+              "clause": "7.1.2.3.c.2",
+              "valueMatch": "^http://[^\\s/?#:@][^\\s/?#]*([/?#]\\S*)?$"
+            }
+          },
+          {
+            "method": "ocsp",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.c.1",
+            "accessLocation": {
+              "type": "uniformResourceIdentifier",
+              "clause": "7.1.2.3.c.1",
+              "valueMatch": "^http://[^\\s/?#:@][^\\s/?#]*([/?#]\\S*)?$"
+            }
+          }
+        ]
+      }
+    },
+    "ext_basicConstraints_subscriber": {
+      "basicConstraints": {
+        "alwaysPresent": false,
+        "ca": false,
+        "clause": "7.1.2.3.d",
+        "description": "MAY be present. cA SHALL NOT be true. pathLenConstraint SHALL NOT be present (any pathLenConstraint is reported as undocumented)."
+      }
+    },
+    "ext_keyUsage_strict_any": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Strict generation. This default block is the union of the Strict cells for all permitted key algorithms (RSA: digitalSignature, nonRepudiation, keyEncipherment; EC: digitalSignature, nonRepudiation, keyAgreement, encipherOnly, decipherOnly; EdDSA/ML-DSA: digitalSignature, nonRepudiation; ML-KEM: keyEncipherment only). Per-algorithm usage modes are not expressible here; substitute ext_keyUsage_strict_rsa, _ec, _signatureOnly, or _mlkem for a single-algorithm profile.",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyAgreement",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "encipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "decipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_strict_rsa": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Strict generation. rsaEncryption, Strict: signing only = digitalSignature (nonRepudiation MAY); key management only = keyEncipherment; dual use = digitalSignature + keyEncipherment (nonRepudiation MAY). dataEncipherment is not permitted in Strict.",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_strict_ec": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Strict generation. id-ecPublicKey, Strict: signing only = digitalSignature (nonRepudiation MAY); key management only = keyAgreement (encipherOnly or decipherOnly MAY); dual use = digitalSignature + keyAgreement (nonRepudiation, encipherOnly or decipherOnly MAY).",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyAgreement",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "encipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "decipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_strict_signatureOnly": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Strict generation. id-Ed25519, id-Ed448, and ML-DSA keys: digitalSignature SHALL be set; nonRepudiation MAY be set.",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": true,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_strict_mlkem": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Strict generation. ML-KEM keys: keyEncipherment SHALL be the only bit set (consistent with RFC 9935).",
+        "bits": [
+          {
+            "bit": "keyEncipherment",
+            "alwaysPresent": true,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_multipurpose_any": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Multipurpose generation. Union of the Multipurpose cells for all permitted key algorithms. Multipurpose differs from Strict only for RSA, where dataEncipherment MAY additionally be set when keyEncipherment is set. Substitute ext_keyUsage_multipurpose_rsa, ext_keyUsage_strict_ec, _signatureOnly, or _mlkem for a single-algorithm profile.",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "dataEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyAgreement",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "encipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "decipherOnly",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_keyUsage_multipurpose_rsa": {
+      "keyUsage": {
+        "clause": "7.1.2.3.e",
+        "description": "SHALL be present; SHOULD be marked critical. Bits are constrained per key algorithm for the Multipurpose generation. rsaEncryption, Multipurpose: signing only = digitalSignature (nonRepudiation MAY); key management only = keyEncipherment (dataEncipherment MAY); dual use = digitalSignature + keyEncipherment (nonRepudiation and dataEncipherment MAY).",
+        "bits": [
+          {
+            "bit": "digitalSignature",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "nonRepudiation",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "keyEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          },
+          {
+            "bit": "dataEncipherment",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.e"
+          }
+        ]
+      }
+    },
+    "ext_extKeyUsage_multipurpose": {
+      "extendedKeyUsage": {
+        "clause": "7.1.2.3.f",
+        "ordered": false,
+        "description": "SHALL be present. Multipurpose: id-kp-emailProtection SHALL be present; id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage SHALL NOT be present. Per Ballot SMC018, effective July 1, 2027 only id-kp-emailProtection (mandatory) and id-kp-clientAuth (optional) are permitted. This block models the July 2027 state; until then other values (for example document signing EKUs) MAY still be present and will be reported as undocumented rather than as violations.",
+        "purposes": [
+          {
+            "oid": "%idKpEmailProtection%",
+            "clause": "7.1.2.3.f"
+          },
+          {
+            "oid": "%idKpClientAuth%",
+            "alwaysPresent": false,
+            "clause": "7.1.2.3.f",
+            "description": "Optional; the only additional EKU permitted from July 1, 2027 (SMC018)."
+          }
+        ]
+      }
+    },
+    "ext_extKeyUsage_strict": {
+      "extendedKeyUsage": {
+        "clause": "7.1.2.3.f",
+        "description": "SHALL be present. Strict: id-kp-emailProtection SHALL be present; other values SHALL NOT be present.",
+        "purposes": [
+          {
+            "oid": "%idKpEmailProtection%",
+            "clause": "7.1.2.3.f"
+          }
+        ]
+      }
+    },
+    "ext_authorityKeyIdentifier_subscriber": {
+      "authorityKeyIdentifier": {
+        "critical": false,
+        "clause": "7.1.2.3.g",
+        "description": "SHALL be present; SHALL NOT be marked critical. keyIdentifier SHALL be present. authorityCertIssuer and authorityCertSerialNumber SHALL NOT be present (either is reported as undocumented).",
+        "keyIdentifier": {
+          "clause": "7.1.2.3.g"
+        }
+      }
+    },
+    "ext_subjectKeyIdentifier_subscriber": {
+      "subjectKeyIdentifier": {
+        "alwaysPresent": false,
+        "critical": false,
+        "clause": "7.1.2.3.n",
+        "description": "Optional; if present SHALL NOT be marked critical."
+      }
+    },
+    "ext_subjectAltName_mailbox": {
+      "subjectAltName": {
+        "clause": "7.1.2.3.h",
+        "description": "SHALL be present. SHOULD NOT be marked critical unless the subject field is an empty sequence, so criticality is left unconstrained for certificate types whose subject may be empty. Every Mailbox Address in the subject SHALL be repeated here (SBR 7.1.4.2.1); that cross-field rule is not expressible in this schema.",
+        "names": {
+          "size": {
+            "min": 1
+          },
+          "pattern": {
+            "type": "rfc822Name",
+            "clause": "7.1.4.2.1",
+            "valueMatch": "^[^@\\s]+@[^@\\s]+$"
+          },
+          "description": "At least one Mailbox Field SHALL be present as rfc822Name or otherName of type id-on-SmtpUTF8Mailbox. otherName entries are skipped by this tool's pattern matching and cannot be value-checked; any other supported GeneralName type is reported as a mismatch."
+        }
+      }
+    },
+    "ext_subjectAltName_mailbox_nonCritical": {
+      "subjectAltName": {
+        "critical": false,
+        "clause": "7.1.2.3.h",
+        "description": "SHALL be present. SHOULD NOT be marked critical unless the subject is empty; this certificate type always carries subject:organizationName, so the extension is constrained to non-critical. Every Mailbox Address in the subject SHALL be repeated here (SBR 7.1.4.2.1).",
+        "names": {
+          "size": {
+            "min": 1
+          },
+          "pattern": {
+            "type": "rfc822Name",
+            "clause": "7.1.4.2.1",
+            "valueMatch": "^[^@\\s]+@[^@\\s]+$"
+          },
+          "description": "At least one Mailbox Field SHALL be present as rfc822Name or otherName of type id-on-SmtpUTF8Mailbox. otherName entries are skipped by this tool's pattern matching and cannot be value-checked; any other supported GeneralName type is reported as a mismatch."
+        }
+      }
+    }
+  }
+}

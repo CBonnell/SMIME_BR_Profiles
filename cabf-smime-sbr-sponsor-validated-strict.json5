@@ -1,0 +1,246 @@
+{
+  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  "type": "certificate",
+  "name": "cabf-smime-sbr-sponsor-validated-strict",
+  "version": "1.0.0",
+  "description": "CA/Browser Forum S/MIME Baseline Requirements v1.0.16 (Ballot SMC018, published September 28, 2026), Sponsor-validated Strict generation subscriber certificate profile, policy identifier 2.23.140.1.5.3.3.",
+  "org": "cabforum",
+  "spec": "smime-br-1.0.16",
+  "$includes": [
+    "cabf-smime-sbr-common.json5"
+  ],
+  "content": {
+    "version": {
+      "$use": "version_v3"
+    },
+    "serialNumber": {
+      "$use": "serialNumber_subscriber"
+    },
+    "signatureAlgorithm": {
+      "$use": "signatureAlgorithm_sbr"
+    },
+    "signatureValue": {
+      "$use": "signatureValue_any"
+    },
+    "validity": {
+      "clause": "6.3.2",
+      "description": "Strict maximum validity is 825 days, a day being 86,400 seconds with any excess (including fractional seconds) counting as an additional day. Because RFC 5280 validity is inclusive of notAfter, notAfter minus notBefore SHALL NOT exceed 71,279,999 seconds.",
+      "validityPeriodSecs": {
+        "clause": "6.3.2",
+        "valueLte": 71279999
+      }
+    },
+    "subjectPublicKey": {
+      "$use": "subjectPublicKey_sbr"
+    },
+    "subject": {
+      "ordered": false,
+      "description": "Sponsor-validated Strict subject (SBR 7.1.4.2.5). organizationName and organizationIdentifier SHALL be present, together with givenName and surname, or pseudonym. streetAddress and postalCode SHALL NOT be present; any other attribute SHALL NOT be present. Anything not listed is reported as undocumented.",
+      "rdns": [
+        {
+          "commonName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,64}$",
+            "description": "If present, SHALL contain a Personal Name, a Pseudonym, or a Mailbox Address (SBR 7.1.4.2.2 a)."
+          }
+        },
+        {
+          "organizationName": {
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,64}$",
+            "description": "SHALL be present and SHALL contain the Subject's full legal name or a verified Assumed Name (SBR 7.1.4.2.2 b)."
+          }
+        },
+        {
+          "organizationalUnitName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,64}$",
+            "description": "If present, SHALL contain the name of a verified Affiliate of the Legal Entity (SBR 3.2.3.1 and 7.1.4.2.2 c)."
+          }
+        },
+        {
+          "organizationIdentifier": {
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^[A-Z]{3}[A-Z]{2}(\\+[A-Z0-9]{1,3})?-.+$",
+            "description": "SHALL be present and SHALL contain a Registration Reference formatted per SBR Appendix A: 3-character scheme identifier, 2-character country code (XG for global schemes), optional '+' subdivision for NTR, '-', then the reference (SBR 7.1.4.2.2 d)."
+          }
+        },
+        {
+          "givenName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "description": "If present, SHALL contain the Subject's verified given name(s) (SBR 7.1.4.2.2 e). Sponsor-validated Strict: the subject SHALL include the Individual's given name and surname, or a pseudonym; this either/or rule across attributes is not expressible in this schema."
+          }
+        },
+        {
+          "surname": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "description": "If present, SHALL contain the Subject's verified surname(s) (SBR 7.1.4.2.2 e). Sponsor-validated Strict: the subject SHALL include the Individual's given name and surname, or a pseudonym; this either/or rule across attributes is not expressible in this schema."
+          }
+        },
+        {
+          "pseudonym": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,128}$",
+            "description": "If present, SHALL meet SBR 3.1.3 and SHALL NOT be combined with givenName or surname (SBR 7.1.4.2.2 f)."
+          }
+        },
+        {
+          "title": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,64}$",
+            "description": "If present, SHALL contain a verified professional or corporate title (SBR 3.2.4.1 and 7.1.4.2.2 i)."
+          }
+        },
+        {
+          "serialNumber": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "valueMatch": "^.{1,64}$",
+            "description": "Optional identifier assigned by the CA or RA to identify and/or disambiguate the Subscriber (SBR 7.1.4.2.2 g). Length bound per RFC 5280 ub-serial-number."
+          }
+        },
+        {
+          "emailAddress": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "valueAllOf": [
+              {
+                "match": "^[^@\\s]+@[^@\\s]+$"
+              },
+              {
+                "match": "^.{1,255}$"
+              }
+            ],
+            "description": "If present, SHALL contain a single Mailbox Address verified under SBR 3.2.2 and repeated in subjectAltName (SBR 7.1.4.2.2 h)."
+          }
+        },
+        {
+          "localityName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,128}$",
+            "description": "If present, SHALL contain locality information verified under SBR 3.2.3 or 3.2.4 (SBR 7.1.4.2.2 k)."
+          }
+        },
+        {
+          "stateOrProvinceName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "tags": [
+              "0x0c",
+              "0x13"
+            ],
+            "valueMatch": "^.{1,128}$",
+            "description": "If present, SHALL contain state or province information verified under SBR 3.2.3 or 3.2.4 (SBR 7.1.4.2.2 l)."
+          }
+        },
+        {
+          "countryName": {
+            "alwaysPresent": false,
+            "clause": "7.1.4.2.5",
+            "valueMatch": "^[A-Z]{2}$",
+            "description": "If present, SHALL contain the two-letter ISO 3166-1 country code associated with the location of the Subject (SBR 7.1.4.2.2 n)."
+          }
+        }
+      ]
+    },
+    "issuer": {
+      "$use": "issuer_subordinateCa"
+    },
+    "extensions": {
+      "ordered": false,
+      "description": "Extensions for Sponsor-validated Strict subscriber certificates (SBR 7.1.2.3). Extensions permitted by SBR but not modeled by this schema version (smimeCapabilities, qcStatements, Legal Entity Identifier) will be reported as undocumented if present. subjectDirectoryAttributes and nameConstraints SHALL NOT be present; the Adobe extensions and any other extension SHALL NOT be present in Strict.",
+      "entries": [
+        {
+          "certificatePolicies": {
+            "clause": "7.1.2.3.a",
+            "description": "SHALL be present; SHOULD NOT be marked critical. SHALL include exactly one reserved S/MIME BR policy identifier, which for this profile is the Strict identifier. CA-defined policy identifiers documented in the CP/CPS MAY also be present and should be added here by the CA operator. id-qt-cps, if present, SHALL be an HTTP or HTTPS URL; id-qt-unotice, if present, SHALL contain explicitText and SHALL NOT contain noticeRef (not modeled; reported as undocumented).",
+            "ordered": false,
+            "policies": [
+              {
+                "policyIdentifier": "%policy_sv_strict%",
+                "clause": "7.1.6.4",
+                "policyQualifiers": {
+                  "qualifiers": [
+                    {
+                      "type": "cpsUri",
+                      "alwaysPresent": false,
+                      "clause": "7.1.2.3.a",
+                      "valueMatch": "^https?://\\S+$"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "$use": "ext_crlDistributionPoints_strict"
+        },
+        {
+          "$use": "ext_authorityInformationAccess_strict"
+        },
+        {
+          "$use": "ext_basicConstraints_subscriber"
+        },
+        {
+          "$use": "ext_keyUsage_strict_any"
+        },
+        {
+          "$use": "ext_extKeyUsage_strict"
+        },
+        {
+          "$use": "ext_authorityKeyIdentifier_subscriber"
+        },
+        {
+          "$use": "ext_subjectAltName_mailbox_nonCritical"
+        },
+        {
+          "$use": "ext_subjectKeyIdentifier_subscriber"
+        }
+      ]
+    }
+  }
+}
